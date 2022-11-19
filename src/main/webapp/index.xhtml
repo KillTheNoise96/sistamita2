@@ -1,0 +1,86 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Eso es!</title>
+    </h:head>
+    <h:body>
+        <h:form id="formulario">
+            <h:outputLabel value="Primer Nombre "/>
+            <h:inputText value="#{clientesBackBean.primerNombre}"
+                         style="width: 200px"/>
+            <br/>
+            <h:outputLabel value="Segundo Nombre "/>
+            <h:inputText value="#{clientesBackBean.segundoNombre}"
+                         style="width: 200px"/>
+            <br/>
+            <h:outputLabel value="Primer Apellido "/>
+            <h:inputText value="#{clientesBackBean.primerApellido}"
+                         style="width: 200px"/>
+            <br/>
+            <h:outputLabel value="Segundo Apellido "/>
+            <h:inputText value="#{clientesBackBean.segundoApellido}"
+                         style="width: 200px"/>
+            <br/>
+            <h:outputLabel value="Sexo "/>
+            <h:inputText value="#{clientesBackBean.sexo}"
+                         style="width: 200px"
+                         maxlength="1"/>
+            <br/>
+            <p:commandButton value="Guardar"
+                             actionListener="#{clientesBackBean.guardar}"
+                             update="formulario clientes"/>
+            <br/>
+            <p:dataTable id="clientes" var="c" value="#{clientesBackBean.clientesList}" rowKey="#{c.id}"
+                         selectionMode="single">
+                <f:facet name="header">
+                    TABLA LOCAL
+                </f:facet>
+                <p:column headerText="Id">
+                    <h:outputText value="#{c.id}"/>
+                </p:column>
+                <p:column headerText="Primer Nombre">
+                    <h:outputText value="#{c.primerNombre}"/>
+                </p:column>
+                <p:column headerText="Segundo Nombre">
+                    <h:outputText value="#{c.segundoNombre}"/>
+                </p:column>
+                <p:column headerText="Primer Apellido">
+                    <h:outputText value="#{c.primerApellido}"/>
+                </p:column>
+                <p:column headerText="Segundo Apellido">
+                    <h:outputText value="#{c.segundoApellido}"/>
+                </p:column>
+                <p:column headerText="Sexo">
+                    <h:outputText value="#{c.sexo}"/>
+                </p:column>
+            </p:dataTable>
+            <br/>
+            <p:dataTable id="clientesapi" var="ca" value="#{clientesBackBean.clientesApiList}" rowKey="#{ca.idCliente}"
+                         selectionMode="single">
+                <f:facet name="header">
+                    TABLA DEL API
+                </f:facet>
+                <p:column headerText="Id">
+                    <h:outputText value="#{ca.idCliente}"/>
+                </p:column>
+                <p:column headerText="Primer Nombre">
+                    <h:outputText value="#{ca.primNombre}"/>
+                </p:column>
+                <p:column headerText="Segundo Nombre">
+                    <h:outputText value="#{ca.segNombre}"/>
+                </p:column>
+                <p:column headerText="Primer Apellido">
+                    <h:outputText value="#{ca.primApellido}"/>
+                </p:column>
+                <p:column headerText="Segundo Apellido">
+                    <h:outputText value="#{ca.segApellido}"/>
+                </p:column>
+                <p:column headerText="Sexo">
+                    <h:outputText value="#{ca.genero}"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</f:view>
